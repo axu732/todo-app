@@ -16,7 +16,9 @@ function App() {
   return (
     <main>
       <TaskForm onAdd = {addTask}/>
-      <Task />
+      {tasks.map(task => (
+        <Task {...task}/>
+      ))}
 
     </main>
   );
