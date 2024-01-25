@@ -44,6 +44,7 @@ padding:5px 9px;
 margin-top: 5px;
 display:flex;
 transition: opacity .2s linear;
+align-items: center;
 }
 
 div.task svg{
@@ -60,6 +61,10 @@ div.task.done {
 div.task span{
   position: relative;
   margin-top: -1.5px;
+}
+
+div.taskName{
+  flex-grow: 1;
 }
 
 div.task span:before {
@@ -79,4 +84,21 @@ div.task.done span:before{
 
 h1, h2{
   text-align: center;
+}
+
+div.checkbox{
+  display: flex;
+  align-items: center;
+}
+
+button.trashButton{
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+}
+
+button.trashButton svg{
+  fill:red;
+  height: 17px;
 }

@@ -41,8 +41,10 @@ function App() {
   const tasksComplete = tasks.filter(t => t.done).length;
   const totalTasks = tasks.length;
 
+  // Dynamic message based on how many tasks have been done by the user
   function getMessage(){
     const percentage = (tasksComplete / totalTasks) * 100;
+
     if (percentage === 100){
       return 'Good work!'
     }
@@ -54,16 +56,25 @@ function App() {
     return 'Keep it up!';
   }
 
-  
+  //Function will check the previous state of tasks and then filter the tasks removing the one at task index. 
+  // Then we will save the array to local storage
+  function removeTask(taskIndex) {
+    setTasks(prev => {
+      const newTasks = prev.filter((task, index) => index !== taskIndex);
+      localStorage.setItem("tasks", JSON.stringify(newTasks)); // Update local storage
+      return newTasks;
+    });
+  }
 
-  // Defines the onAdd function for the TaskForm component and then loops through the tasks array to display them
+  // Defines the onAdd function for the TaskForm component and then loops through the tasks array to display them.
+  // Header updates based on how many tasks have been completed
   return (
     <main>
       <h1>Tasks: {tasksComplete} / {totalTasks} done </h1>
       <h2>{getMessage()}</h2>
       <TaskForm onAdd={addTask} />
       {tasks.map((task, taskIndex) => (
-        <Task {...task} onToggle= {done => updateTaskDone(taskIndex, done)}/>
+        <Task {...task} onDelete={() => removeTask(taskIndex)} onToggle= {done => updateTaskDone(taskIndex, done)}/>
       ))}
     </main>
   );
