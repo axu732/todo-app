@@ -33,6 +33,7 @@ form button{
   background-color: #61DAFB;
   border: none;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 div.task{
