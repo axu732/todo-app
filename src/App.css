@@ -27,6 +27,7 @@ form input[type= "text"] {
   width: 100%;
   padding: 0 8px;
   cursor:pointer;
+  outline: none;
 }
 
 form button{
@@ -58,7 +59,7 @@ div.task.done {
 
 div.task span{
   position: relative;
-  margin-top: -2px;
+  margin-top: -1.5px;
 }
 
 div.task span:before {
@@ -74,4 +75,8 @@ div.task span:before {
 
 div.task.done span:before{
   width: 100%;
+}
+
+h1, h2{
+  text-align: center;
 }

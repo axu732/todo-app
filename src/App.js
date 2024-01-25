@@ -38,9 +38,29 @@ function App() {
     });
   }
 
+  const tasksComplete = tasks.filter(t => t.done).length;
+  const totalTasks = tasks.length;
+
+  function getMessage(){
+    const percentage = (tasksComplete / totalTasks) * 100;
+    if (percentage === 100){
+      return 'Good work!'
+    }
+
+    if (percentage === 0){
+      return 'Try to do one today!'
+    }
+
+    return 'Keep it up!';
+  }
+
+  
+
   // Defines the onAdd function for the TaskForm component and then loops through the tasks array to display them
   return (
     <main>
+      <h1>Tasks: {tasksComplete} / {totalTasks} done </h1>
+      <h2>{getMessage()}</h2>
       <TaskForm onAdd={addTask} />
       {tasks.map((task, taskIndex) => (
         <Task {...task} onToggle= {done => updateTaskDone(taskIndex, done)}/>
