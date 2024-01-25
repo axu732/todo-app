@@ -6,7 +6,7 @@ import TaskForm from "./TaskForm";
 function App() {
   const [tasks, setTasks] = useState([]);
 
-  // This will set the tasks array into local storage. It will check if it is 0 and return if it is, making sure it is not set back to an empty array
+  // This will set the tasks array into local storage. It will check if it is 0 and return if it is, making sure it is not set back to an empty array.
   useEffect(() => {
     if(tasks.length === 0){
       return;
@@ -14,11 +14,13 @@ function App() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
-  // We will then read from local storage and setTasks to the tasks array
-  useEffect(() => {
-    const tasksArray = JSON.parse(localStorage.getItem('tasks'));
+  // We will then read from local storage and setTasks to the tasks array. If it tasks is null, we will skip this step.
+ useEffect(() => {
+  const tasksArray = JSON.parse(localStorage.getItem('tasks'));
+  if (tasksArray !== null && tasksArray !== undefined) {
     setTasks(tasksArray);
-  }, []);
+  }
+}, []);
 
   // function that that will add the task to the end of an array
   function addTask(taskName) {
@@ -27,12 +29,20 @@ function App() {
     });
   }
 
+  function updateTaskDone(taskIndex, newDone){
+    setTasks(prev => {
+      const newTasks = [...prev];
+      newTasks[taskIndex].done = newDone;
+      return newTasks
+    });
+  }
+
   // Defines the onAdd function for the TaskForm component and then loops through the tasks array to display them
   return (
     <main>
       <TaskForm onAdd={addTask} />
-      {tasks.map((task) => (
-        <Task {...task} />
+      {tasks.map((task, taskIndex) => (
+        <Task {...task} onToggle= {done => updateTaskDone(taskIndex, done)}/>
       ))}
     </main>
   );

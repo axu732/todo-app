@@ -47,4 +47,5 @@ display:flex;
 div.task svg{
   height: 20px;
   margin-right: 4px;
+  fill: #61DAFB;
 }
