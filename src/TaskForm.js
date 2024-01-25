@@ -11,7 +11,7 @@ export default function TaskForm({onAdd}){
     setTaskName('');
 
   }
-
+// Returns the Task form text box for adding a task
   return (
     <form onSubmit={handleSubmit}>
         <button>+</button>

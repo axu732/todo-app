@@ -29,6 +29,7 @@ function App() {
     });
   }
 
+  // This will update the task of at taskIndex if it is done or not
   function updateTaskDone(taskIndex, newDone){
     setTasks(prev => {
       const newTasks = [...prev];
