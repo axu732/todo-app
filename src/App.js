@@ -6,6 +6,7 @@ import TaskForm from './TaskForm';
 function App() {
   const [tasks, setTasks] = useState([]);
 
+  // function that that will add the task to the end of an array
   function addTask(taskName) {
     setTasks(prev => {
       return [...prev, {name:taskName, done:false}];
@@ -13,6 +14,7 @@ function App() {
 
   }
 
+  // Defines the onAdd function for the TaskForm component and then loops through the tasks array to display them
   return (
     <main>
       <TaskForm onAdd = {addTask}/>

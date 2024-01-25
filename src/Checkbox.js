@@ -2,6 +2,7 @@ import { useState } from "react";
 
 export default function Checkbox({ defaultChecked = false }) {
   const [checked, setCheckState] = useState(defaultChecked);
+  // Using states to display the different checkboxes. Taken from fontawesome svg code.
   return (
     <div>
       {!checked && (
