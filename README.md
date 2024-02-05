@@ -4,4 +4,4 @@ A simple to do app that utilises state hooks to add/remove tasks and also update
 
 # How to Run
 
-Clone the repository and then type in console `npm install ` followed by `npm run start`
+Clone the repository and then type in console `npm install` followed by `npm run start`
