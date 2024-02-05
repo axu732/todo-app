@@ -53,6 +53,10 @@ function App() {
       return "Try to do one today!";
     }
 
+    if (tasks.length === 0) {
+      return "Add a task to get started!";
+    }
+
     return "Keep it up!";
   }
 
@@ -71,7 +75,7 @@ function App() {
       const newTasks = [...prev];
       newTasks[taskIndex].name = newName;
       return newTasks;
-    })
+    });
   }
 
   // Defines the onAdd function for the TaskForm component and then loops through the tasks array to display them.
@@ -86,7 +90,7 @@ function App() {
       {tasks.map((task, taskIndex) => (
         <Task
           {...task}
-          onRename={newName => renameTask(taskIndex, newName)}
+          onRename={(newName) => renameTask(taskIndex, newName)}
           onDelete={() => removeTask(taskIndex)}
           onToggle={(done) => updateTaskDone(taskIndex, done)}
         />
